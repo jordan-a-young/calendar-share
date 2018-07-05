@@ -18,9 +18,11 @@ class UserLogin extends Component {
 		})
 	};
 
-	handleChange = event => {
+	handleChange = (event, values) => {
 		const { appStore } = this.props;
-		appStore.setUsername(event.target.value);
+		appStore.setEventTitle(values.title);
+		appStore.setEventStart(values.start);
+		appStore.setEventEnd(values.end);
 	};
 
 	handleSubmit = event => {
@@ -44,18 +46,38 @@ class UserLogin extends Component {
 							ref={c => (this.form = c)}
 						>
 							<AvField
-								id="user"
-								name="user"
-								label="User ID: "
+								id="title"
+								name="title"
+								label="Event Title:"
 								type="text"
-								placeholder="Enter Your User Id"
+								placeholder="Enter the event title"
 								onChange={this.handleChange}
-								className="w-50"
+								className="w-75"
+								required
+							/>
+							<AvField
+								id="start"
+								name="start"
+								label="Event Start:"
+								type="text"
+								placeholder="Enter the event start date"
+								onChange={this.handleChange}
+								className="w-75"
+								required
+							/>
+							<AvField
+								id="end"
+								name="end"
+								label="Event End:"
+								type="text"
+								placeholder="Enter the event end date"
+								onChange={this.handleChange}
+								className="w-75"
 								required
 							/>
 							<FormGroup>
 								<Button type="submit" color="success">
-									Login
+									Submit
 								</Button>{" "}
 								<Button type="reset" color="danger" onClick={this.handleReset}>
 									Clear
