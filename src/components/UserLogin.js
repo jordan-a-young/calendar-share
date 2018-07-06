@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AvField, AvForm } from "availity-reactstrap-validation";
-import { FormGroup, Button, Card, CardTitle, CardBody } from "reactstrap";
+import { FormGroup, Button, Card, CardBody } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
@@ -24,7 +24,8 @@ class UserLogin extends Component {
 	};
 
 	handleSubmit = event => {
-		this.setState({ submitted: !this.state.submitted });
+		const { appStore } = this.props;
+		appStore.toggleLogin();
 	};
 
 	handleReset = () => {
@@ -32,7 +33,8 @@ class UserLogin extends Component {
 	};
 
 	render() {
-		if (this.state.submitted) return <Redirect to="/Home" />;
+		const { appStore } = this.props;
+		if (appStore.state.user.loggedIn) return <Redirect to="/Home" />;
 		return (
 			<div>
 				<Card>

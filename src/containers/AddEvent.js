@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Calendar from "../components/Calendar";
 import Header from "../components/Header";
 import EventAdder from "../components/EventAdder";
 import { Container } from "reactstrap";
@@ -18,7 +17,6 @@ class AddEvent extends Component {
 	componentWillMount() {
 		const { appStore } = this.props;
 		appStore.setPageTitle("Add an Event");
-		console.log(appStore.state);
 	}
 
 	render() {

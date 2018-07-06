@@ -6,7 +6,8 @@ class StateStore {
 			this,
 			{
 				user: {
-					username: null
+					username: null,
+					loggedIn: false
 				},
 				page: {
 					title: null
@@ -14,7 +15,8 @@ class StateStore {
 				event: {
 					title: "",
 					start: "",
-					end: ""
+					end: "",
+					add: false
 				}
 			},
 			state

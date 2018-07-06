@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Calendar from "../components/Calendar";
 import Header from "../components/Header";
+import AddEvent from "./AddEvent";
+import Login from "./Login";
 import { Button, Container } from "reactstrap";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
@@ -14,20 +16,39 @@ class Home extends Component {
 		})
 	};
 
+	handleSubmit = () => {
+		const { appStore } = this.props;
+		appStore.toggleEventAdd();
+	};
+
 	componentWillMount() {
 		const { appStore } = this.props;
 		appStore.setPageTitle("Home");
-		console.log(appStore.state);
+	}
+
+	componentWillUpdate() {
+		const { appStore } = this.props;
+		appStore.setPageTitle("Home");
 	}
 
 	render() {
+		const { appStore } = this.props;
+
+		if (!appStore.state.user.loggedIn) return <Login />;
+
+		if (appStore.state.event.add) return <AddEvent />;
 		return (
 			<div>
 				<Header />
 				<Container>
 					<Calendar />
 					<span className="m-2">
-						<Button color="success" tag="a" href="/AddEvent" className="m-2">
+						<Button
+							color="success"
+							type="submit"
+							className="m-2"
+							onClick={this.handleSubmit}
+						>
 							Add Event
 						</Button>
 						<Button color="danger" tag="a" href="/" className="m-2">

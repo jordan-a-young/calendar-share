@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import { AvField, AvForm } from "availity-reactstrap-validation";
 import { FormGroup, Button, Card, CardTitle, CardBody } from "reactstrap";
-import { Redirect } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
 
 @inject("appStore")
 @observer
 class UserLogin extends Component {
-	state = {
-		submitted: false
-	};
-
 	static propTypes = {
 		appStore: PropTypes.shape({
 			state: PropTypes.any
@@ -26,7 +21,8 @@ class UserLogin extends Component {
 	};
 
 	handleSubmit = event => {
-		this.setState({ submitted: !this.state.submitted });
+		const { appStore } = this.props;
+		appStore.toggleEventAdd();
 	};
 
 	handleReset = () => {
@@ -34,7 +30,6 @@ class UserLogin extends Component {
 	};
 
 	render() {
-		if (this.state.submitted) return <Redirect to="/Home" />;
 		return (
 			<div>
 				<Card>
@@ -76,11 +71,23 @@ class UserLogin extends Component {
 								required
 							/>
 							<FormGroup>
-								<Button type="submit" color="success">
+								<Button type="submit" color="success" className="m-1">
 									Submit
-								</Button>{" "}
-								<Button type="reset" color="danger" onClick={this.handleReset}>
+								</Button>
+								<Button
+									type="reset"
+									color="danger"
+									onClick={this.handleReset}
+									className="m-1"
+								>
 									Clear
+								</Button>
+								<Button
+									color="info"
+									onClick={this.handleSubmit}
+									className="m-1"
+								>
+									Return
 								</Button>
 							</FormGroup>
 						</AvForm>

@@ -18,9 +18,8 @@ const App = () => (
 		<BrowserRouter basename="/">
 			<div>
 				<Switch>
-					<Route exact path="/" component={Login} />
+					<Route exact path="/" component={Home} />
 					<Route path="/Home" component={Home} />
-					<Route path="/AddEvent" component={AddEvent} />
 				</Switch>
 			</div>
 		</BrowserRouter>

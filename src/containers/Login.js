@@ -17,7 +17,6 @@ class Login extends Component {
 	componentWillMount() {
 		const { appStore } = this.props;
 		appStore.setPageTitle("User Login");
-		console.log(appStore.state);
 	}
 
 	render() {

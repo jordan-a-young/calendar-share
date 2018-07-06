@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Button } from "reactstrap";
 import { appStore, stateStore } from "../stores";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
@@ -13,8 +13,24 @@ class Header extends Component {
 		})
 	};
 
+	handleSubmit = () => {
+		const { appStore } = this.props;
+		console.log(appStore.state);
+	};
+
 	render() {
-		return <h1 className="text-center">{appStore.state.page.title}</h1>;
+		return (
+			<div>
+				<h1 className="text-center">{appStore.state.page.title}</h1>
+				<Button
+					type="submit"
+					className="align-center"
+					onClick={this.handleSubmit}
+				>
+					Print
+				</Button>
+			</div>
+		);
 	}
 }
 

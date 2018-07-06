@@ -28,6 +28,21 @@ class AppStore {
 	};
 
 	@action
+	setEventAdd = event => {
+		this.state.event.add = valueFromEvent(event);
+	};
+
+	@action
+	toggleEventAdd = () => {
+		this.state.event.add = !this.state.event.add;
+	};
+
+	@action
+	toggleLogin = () => {
+		this.state.user.loggedIn = !this.state.user.loggedIn;
+	};
+
+	@action
 	setPageTitle(title) {
 		this.state.page.title = title;
 	}
