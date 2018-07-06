@@ -10,6 +10,11 @@ class StateStore {
 				},
 				page: {
 					title: null
+				},
+				event: {
+					title: "",
+					start: "",
+					end: ""
 				}
 			},
 			state

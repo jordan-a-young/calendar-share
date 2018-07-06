@@ -54,10 +54,15 @@ class UserLogin extends Component {
 								required
 							/>
 							<FormGroup>
-								<Button type="submit" color="success">
+								<Button type="submit" color="success" className="m-1">
 									Login
 								</Button>{" "}
-								<Button type="reset" color="danger" onClick={this.handleReset}>
+								<Button
+									type="reset"
+									color="danger"
+									onClick={this.handleReset}
+									className="m-1"
+								>
 									Clear
 								</Button>
 							</FormGroup>

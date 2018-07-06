@@ -13,6 +13,21 @@ class AppStore {
 	}
 
 	@action
+	setEventTitle = event => {
+		this.state.event.title = valueFromEvent(event);
+	};
+
+	@action
+	setEventStart = event => {
+		this.state.event.start = valueFromEvent(event);
+	};
+
+	@action
+	setEventEnd = event => {
+		this.state.event.end = valueFromEvent(event);
+	};
+
+	@action
 	setPageTitle(title) {
 		this.state.page.title = title;
 	}
