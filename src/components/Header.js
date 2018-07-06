@@ -20,13 +20,9 @@ class Header extends Component {
 
 	render() {
 		return (
-			<div>
-				<h1 className="text-center">{appStore.state.page.title}</h1>
-				<Button
-					type="submit"
-					className="align-center"
-					onClick={this.handleSubmit}
-				>
+			<div className="text-center">
+				<h1>{appStore.state.page.title}</h1>
+				<Button type="submit" className="m-1" onClick={this.handleSubmit}>
 					Print
 				</Button>
 			</div>

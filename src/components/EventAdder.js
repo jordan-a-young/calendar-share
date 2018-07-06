@@ -13,14 +13,23 @@ class UserLogin extends Component {
 		})
 	};
 
-	handleChange = (event, values) => {
+	// handleChange = (event, values) => {
+	// 	const { appStore } = this.props;
+	// 	console.log(values);
+	// 	appStore.setEventTitle(values.title);
+	// 	appStore.setEventStart(values.start);
+	// 	appStore.setEventEnd(values.end);
+	// };
+
+	handleSubmit = (event, values) => {
 		const { appStore } = this.props;
 		appStore.setEventTitle(values.title);
 		appStore.setEventStart(values.start);
 		appStore.setEventEnd(values.end);
+		appStore.toggleEventAdd();
 	};
 
-	handleSubmit = event => {
+	handleReturn = () => {
 		const { appStore } = this.props;
 		appStore.toggleEventAdd();
 	};
@@ -46,8 +55,7 @@ class UserLogin extends Component {
 								label="Event Title:"
 								type="text"
 								placeholder="Enter the event title"
-								onChange={this.handleChange}
-								className="w-75"
+								className="w-50"
 								required
 							/>
 							<AvField
@@ -56,8 +64,7 @@ class UserLogin extends Component {
 								label="Event Start:"
 								type="text"
 								placeholder="Enter the event start date"
-								onChange={this.handleChange}
-								className="w-75"
+								className="w-50"
 								required
 							/>
 							<AvField
@@ -66,8 +73,7 @@ class UserLogin extends Component {
 								label="Event End:"
 								type="text"
 								placeholder="Enter the event end date"
-								onChange={this.handleChange}
-								className="w-75"
+								className="w-50"
 								required
 							/>
 							<FormGroup>
@@ -84,7 +90,7 @@ class UserLogin extends Component {
 								</Button>
 								<Button
 									color="info"
-									onClick={this.handleSubmit}
+									onClick={this.handleReturn}
 									className="m-1"
 								>
 									Return

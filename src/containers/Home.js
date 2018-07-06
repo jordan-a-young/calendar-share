@@ -21,6 +21,12 @@ class Home extends Component {
 		appStore.toggleEventAdd();
 	};
 
+	handleLogout = () => {
+		const { appStore } = this.props;
+		appStore.setUsername(null);
+		appStore.toggleLogin();
+	};
+
 	componentWillMount() {
 		const { appStore } = this.props;
 		appStore.setPageTitle("Home");
@@ -51,8 +57,8 @@ class Home extends Component {
 						>
 							Add Event
 						</Button>
-						<Button color="danger" tag="a" href="/" className="m-2">
-							Return to Login
+						<Button color="danger" onClick={this.handleLogout} className="m-2">
+							Logout
 						</Button>
 					</span>
 				</Container>

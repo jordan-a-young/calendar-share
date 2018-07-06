@@ -7,12 +7,19 @@ BigCalendar.momentLocalizer(moment);
 
 class Calendar extends Component {
 	state = {
-		events: []
+		events: [
+			{
+				start: new Date(),
+				end: new Date(moment().add(1, "days")),
+				title: "This is an event"
+			}
+		]
 	};
 
 	componentWillMount() {}
 
 	render() {
+		console.log(this.state.events);
 		return (
 			<div>
 				<BigCalendar
