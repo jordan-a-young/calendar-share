@@ -13,14 +13,6 @@ class UserLogin extends Component {
 		})
 	};
 
-	// handleChange = (event, values) => {
-	// 	const { appStore } = this.props;
-	// 	console.log(values);
-	// 	appStore.setEventTitle(values.title);
-	// 	appStore.setEventStart(values.start);
-	// 	appStore.setEventEnd(values.end);
-	// };
-
 	handleSubmit = (event, values) => {
 		const { appStore } = this.props;
 		appStore.setEventTitle(values.title);

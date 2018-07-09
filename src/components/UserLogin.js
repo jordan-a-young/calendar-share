@@ -8,23 +8,15 @@ import PropTypes from "prop-types";
 @inject("appStore")
 @observer
 class UserLogin extends Component {
-	state = {
-		submitted: false
-	};
-
 	static propTypes = {
 		appStore: PropTypes.shape({
 			state: PropTypes.any
 		})
 	};
 
-	handleChange = event => {
+	handleSubmit = (event, values) => {
 		const { appStore } = this.props;
-		appStore.setUsername(event.target.value);
-	};
-
-	handleSubmit = event => {
-		const { appStore } = this.props;
+		appStore.setUsername(values.user);
 		appStore.toggleLogin();
 	};
 
@@ -33,8 +25,6 @@ class UserLogin extends Component {
 	};
 
 	render() {
-		const { appStore } = this.props;
-		if (appStore.state.user.loggedIn) return <Redirect to="/Home" />;
 		return (
 			<div>
 				<Card>
@@ -51,14 +41,13 @@ class UserLogin extends Component {
 								label="User ID: "
 								type="text"
 								placeholder="Enter Your User Id"
-								onChange={this.handleChange}
 								className="w-50"
 								required
 							/>
 							<FormGroup>
 								<Button type="submit" color="success" className="m-1">
 									Login
-								</Button>{" "}
+								</Button>
 								<Button
 									type="reset"
 									color="danger"

@@ -27,7 +27,7 @@ class Home extends Component {
 		appStore.toggleLogin();
 	};
 
-	componentWillMount() {
+	componentDidMount() {
 		const { appStore } = this.props;
 		appStore.setPageTitle("Home");
 	}

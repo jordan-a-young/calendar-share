@@ -13,13 +13,18 @@ class Calendar extends Component {
 				end: new Date(moment().add(1, "days")),
 				title: "This is an event"
 			}
-		]
+		],
+		selected: ""
 	};
 
 	componentWillMount() {}
 
+	handleSelect = slotInfo => {
+		console.log(slotInfo);
+	};
+
 	render() {
-		console.log(this.state.events);
+		console.log(this.state);
 		return (
 			<div>
 				<BigCalendar
@@ -27,6 +32,16 @@ class Calendar extends Component {
 					defaultView="month"
 					events={this.state.events}
 					style={{ height: "100vh" }}
+					selectable={true}
+					onSelectEvent={event => alert(event.title)}
+					onSelectSlot={slotInfo => {
+						alert(
+							`selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+								`\nend: ${slotInfo.end.toLocaleString()}` +
+								`\naction: ${slotInfo.action}`
+						);
+						this.setState({ selected: slotInfo });
+					}}
 				/>
 			</div>
 		);
