@@ -18,12 +18,12 @@ class UserLogin extends Component {
 		appStore.setEventTitle(values.title);
 		appStore.setEventStart(values.start);
 		appStore.setEventEnd(values.end);
-		appStore.toggleEventAdd();
+		appStore.setEventAdd(false);
 	};
 
 	handleReturn = () => {
 		const { appStore } = this.props;
-		appStore.toggleEventAdd();
+		appStore.setEventAdd(false);
 	};
 
 	handleReset = () => {

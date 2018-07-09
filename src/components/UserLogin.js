@@ -17,7 +17,7 @@ class UserLogin extends Component {
 	handleSubmit = (event, values) => {
 		const { appStore } = this.props;
 		appStore.setUsername(values.user);
-		appStore.toggleLogin();
+		appStore.setLoginStatus(true);
 	};
 
 	handleReset = () => {

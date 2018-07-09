@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Calendar from "../components/Calendar";
 import Header from "../components/Header";
-import ViewCalendar from "./ViewCalendar";
 import AddEvent from "./AddEvent";
 import Login from "./Login";
-import { Container } from "reactstrap";
+import { Button, Container } from "reactstrap";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
 
@@ -40,8 +39,19 @@ class Home extends Component {
 		if (appStore.state.event.add) return <AddEvent />;
 		return (
 			<div>
+				<Header />
 				<Container>
-					<ViewCalendar />
+					<Calendar />
+					<span className="m-2">
+						<Button
+							color="success"
+							type="submit"
+							className="m-2"
+							onClick={this.handleSubmit}
+						>
+							Add Event
+						</Button>
+					</span>
 				</Container>
 			</div>
 		);

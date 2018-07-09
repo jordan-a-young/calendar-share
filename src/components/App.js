@@ -4,8 +4,6 @@ import { Provider } from "mobx-react";
 import { configure } from "mobx";
 import { appStore, stateStore } from "../stores";
 import Home from "../containers/Home";
-import Login from "../containers/Login";
-import AddEvent from "../containers/AddEvent";
 import "../styles/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 

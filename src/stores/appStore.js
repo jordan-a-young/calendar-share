@@ -33,13 +33,18 @@ class AppStore {
 	};
 
 	@action
-	toggleEventAdd = () => {
+	setEventAdd = () => {
 		this.state.event.add = !this.state.event.add;
 	};
 
 	@action
-	toggleLogin = () => {
+	setLogin = () => {
 		this.state.user.loggedIn = !this.state.user.loggedIn;
+	};
+
+	@action
+	setLoginStatus = event => {
+		this.state.user.loggedIn = valueFromEvent(event);
 	};
 
 	@action
