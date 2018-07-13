@@ -1,32 +1,34 @@
 import React, { Component } from "react";
-import ViewCalendar from "./ViewCalendar";
+import Header from "../components/Header";
 import EventSetup from "../components/EventSetup";
-import Login from "./Login";
 import { Container } from "reactstrap";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
 
 @inject("appStore")
 @observer
-class Home extends Component {
+class AddEvent extends Component {
   static propTypes = {
     appStore: PropTypes.shape({
       state: PropTypes.any
     })
   };
 
-  render() {
+  componentWillMount() {
     const { appStore } = this.props;
+    appStore.setPageTitle("Event Setup");
+  }
 
-    if (!appStore.state.user.loggedIn) return <Login />;
-    if (appStore.state.event.setup) return <EventSetup />;
-
+  render() {
     return (
-      <Container>
-        <ViewCalendar />
-      </Container>
+      <div>
+        <Header />
+        <Container>
+          <EventSetup />
+        </Container>
+      </div>
     );
   }
 }
 
-export default Home;
+export default AddEvent;

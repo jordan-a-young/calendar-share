@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Calendar from "../components/Calendar";
 import Header from "../components/Header";
-import AddEvent from "./AddEvent";
-import Login from "./Login";
 import { Button, Container } from "reactstrap";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
@@ -16,12 +14,7 @@ class Home extends Component {
 		})
 	};
 
-	handleSubmit = () => {
-		const { appStore } = this.props;
-		appStore.setEventAdd(true);
-	};
-
-	componentDidMount() {
+	componentWillMount() {
 		const { appStore } = this.props;
 		appStore.setPageTitle("Home");
 	}
@@ -31,12 +24,12 @@ class Home extends Component {
 		appStore.setPageTitle("Home");
 	}
 
-	render() {
+	handleSubmit = () => {
 		const { appStore } = this.props;
+		appStore.setEventAdd(true);
+	};
 
-		if (!appStore.state.user.loggedIn) return <Login />;
-
-		if (appStore.state.event.add) return <AddEvent />;
+	render() {
 		return (
 			<div>
 				<Header />

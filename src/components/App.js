@@ -5,7 +5,6 @@ import { configure } from "mobx";
 import { appStore, stateStore } from "../stores";
 import Home from "../containers/Home";
 import "../styles/styles.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const stores = { appStore, stateStore };
 window.stateStore = stateStore;
